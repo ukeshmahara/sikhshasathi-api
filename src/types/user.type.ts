@@ -4,6 +4,7 @@ export interface IUser {
   email: string;
   phoneNumber: string;
   password: string;
+  profilePicture?: string;
   createdAt: Date;
   updatedAt: Date;
 }

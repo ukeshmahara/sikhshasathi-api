@@ -24,3 +24,34 @@ export const findUserById = async (
 ): Promise<IUserDocument | null> => {
   return UserModel.findById(id).select("-password");
 };
+
+export const updateUserProfilePicture = async (
+  id: string,
+  profilePicture: string
+): Promise<IUserDocument | null> => {
+  return UserModel.findByIdAndUpdate(
+    id,
+    { profilePicture },
+    { new: true }
+  ).select("-password");
+};
+
+export const updateUserById = async (
+  id: string,
+  data: {
+    fullName?: string;
+    phoneNumber?: string;
+    password?: string;
+    profilePicture?: string;
+  }
+): Promise<IUserDocument | null> => {
+  return UserModel.findByIdAndUpdate(id, data, { new: true }).select(
+    "-password"
+  );
+};
+
+export const findUserByIdWithPassword = async (
+  id: string
+): Promise<IUserDocument | null> => {
+  return UserModel.findById(id);
+};
